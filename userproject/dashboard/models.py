@@ -16,11 +16,4 @@ class UserDetail(models.Model):
 
 
 
-class Item(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-    price = models.CharField(max_length=10)
-    description = models.TextField()
-    
-    def __str__(self):
-        return self.name
+ 

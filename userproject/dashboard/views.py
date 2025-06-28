@@ -7,8 +7,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.http import HttpResponseForbidden
 
-from .models import UserDetail,Item
-from .forms import SignUpForm,UserDetailForm,ItemForm
+from .models import UserDetail
+from .forms import SignUpForm,UserDetailForm
 
 # Create your views here.
 def signup(request):
@@ -52,9 +52,8 @@ def profile_view(request):
     except UserDetail.DoesNotExist:
         user_detail = None
 
-    items = Item.objects.filter(user=request.user)
-
-    return render(request, 'displayprofile.html', {'user_detail': user_detail,'items':items})
+ 
+    return render(request, 'displayprofile.html', {'user_detail': user_detail})
 
   
 
@@ -74,40 +73,4 @@ def profile_edit(request,user_id):
     
     return render(request, 'editprofile.html', {'form': form})
 
-def item_add(request):
-    if request.method == 'POST':
-        form = ItemForm(request.POST)
-        if form.is_valid():
-            item = form.save(commit=False)
-            item.user=request.user
-            item.save()
-            return redirect('displayprofile')
-
-    else:
-        form = ItemForm()
-
-    return render(request,'additem.html',{'form':form,'operation':'Add'})
-
-@login_required
-def item_edit(request, item_id):
-    item = get_object_or_404(Item, id=item_id, user=request.user)
-    if request.method == 'POST':
-        form = ItemForm(request.POST, instance=item)
-        if form.is_valid():
-            form.save()
-            return redirect('displayprofile')  # Redirect to profile view after editing item
-    else:
-        form = ItemForm(instance=item)
-    
-    return render(request, 'additem.html', {'form': form, 'operation': 'Edit'})
-
-@login_required
-def item_delete(request, item_id):
-    item = get_object_or_404(Item, id=item_id, user=request.user)
-    if request.method == 'POST':
-        item.delete()
-        return redirect('displayprofile')  # Redirect to profile view after deleting item
-    
-    return render(request, 'confirm_delete.html', {'item': item})
-
-           
+ 

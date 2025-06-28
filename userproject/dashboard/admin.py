@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserDetail,Item
+from .models import UserDetail
 
 # Register your models here.
 class MemberAdmin(admin.ModelAdmin):
@@ -7,6 +7,4 @@ class MemberAdmin(admin.ModelAdmin):
 admin.site.register(UserDetail,MemberAdmin)
 
 
-class MemberAdmin2(admin.ModelAdmin):
-    list_display = ("user","name","price","description")
-admin.site.register(Item,MemberAdmin2)
+ 
