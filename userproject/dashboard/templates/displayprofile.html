@@ -1,0 +1,114 @@
+{% load static %}
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'dashboard/style.css' %}">
+
+<title>
+</title>
+<style>
+    
+       
+    </style>
+</head>
+<body>
+<div class="header">
+  
+  <ul>
+  <li><a href="">logo</a></li>
+  <li style="float:right"><a href="{% url 'logout' %}">Logout</a></li>
+  <li style="float:right"><a href="#contact">Contact</a></li>
+  <li style="float:right"><a href="#news">About</a></li>
+  <li style="float:right"><a class="active" href="#home">Home</a></li>
+
+ 
+</ul>
+  
+</div>  
+
+<div class="main">
+   <div class="details">
+  {% block content %}
+ 
+    <h2>Profile</h2>
+    {% if user_detail %}
+        <p>First Name: {{ user_detail.firstname }}</p>
+        <p>Last Name: {{ user_detail.lastname }}</p>
+        <p>Contact: {{ user_detail.contact }}</p>
+        <p>Address: {{ user_detail.address }}</p>
+        <a href="{% url 'editprofile' user.id %}">Edit Profile</a>
+		<a href="{% url 'additem' %}">Add Item</a>
+        
+    {% else %}
+        <p>No profile details found.</p>
+        <a href="{% url 'editprofile' user.id %}">Add Profile</a>
+		
+
+
+    {% endif %}
+  
+   </div>
+      <div class="pp">
+            {% if user_detail.profile_photo %}
+                <img src="{{ user_detail.profile_photo.url }}" alt="Profile Photo" class="pp">
+            {% else %}
+                <p>No profile photo uploaded</p>
+            {% endif %}
+        </div>
+
+
+</div>
+ 
+ <div style="overflow-x: auto;">
+   
+
+   <table>
+   <tr>
+   <th>Name</th>
+   <th>Price</th>
+   <th>Description</th>
+   <th>Edit</th>
+   <th>Delete</th>
+   </tr>
+   {%for item in items%}
+   <tr>
+   <td>{{item.name}}</td>
+   <td>{{item.price}}</td>
+   <td>{{item.description}}</td>
+   <td><a href="{% url 'edititem' item.id %}">Edit Item</a></td>
+   <td><a href="{% url 'deleteitem' item.id %}">delete Item</a></td>
+   </tr>
+   {%endfor%}
+   </table>
+  
+    
+	
+   
+  
+ </div>
+
+  
+
+{%endblock%}
+  <!--github check--> 
+  
+ <div class="footer">
+ <div class="foot1">
+ <p>footer part1</p>
+ </div>
+ 
+ <div class="foot2">
+  <p>footer part2</p>
+
+ </div>
+ 
+ <div class="foot3">
+  <p>footer part3</p>
+
+ </div>
+
+</div> 
+</body>
+</html>

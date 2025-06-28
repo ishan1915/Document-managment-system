@@ -1,0 +1,17 @@
+<div class="lister">
+   {%for item in items%}
+
+  
+  
+   <li>{{item.name}}</li>
+   <li>{{item.price}}</li>
+   <li>{{item.description}}</li>
+   
+   <li><a href="{% url 'edititem' item.id %}">Edit Item</a></li>
+   <li><a href="{% url 'deleteitem' item.id %}">delete Item</a><br><li>
+
+   </ul>
+	{%endfor%}
+   
+  
+ </div>

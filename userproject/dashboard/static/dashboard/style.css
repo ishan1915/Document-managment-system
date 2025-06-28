@@ -1,0 +1,191 @@
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+
+.main {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+ /* background-color: #f0f0f0;
+  /*border: 1px solid #ccc;
+  border-radius: 8px;*/
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display:flex;
+}
+
+
+.header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.header li {
+  float: left;
+}
+
+.header li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size:20px;
+}
+
+.header li a:hover {
+  background-color: #111;
+}
+
+ table {
+  border-collapse: collapse;
+  width: 100%;
+  padding-left:10px;
+  margin-left:20px;
+  margin-right:20px;
+  padding-left:10px;
+}
+th{
+	
+ background-color: #04AA6D;
+
+}	
+
+th, td {
+  text-align: left;
+  padding: 6px;
+  
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+.details {
+  margin-bottom: 20px;
+  width:60%;
+}
+
+.details h2 {
+  font-size: 24px;
+  color: #333;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.details p {
+  margin: 5px 0;
+}
+
+.details a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.details a:hover {
+  background-color: #0056b3;
+}
+
+
+.pp {
+            width: 505%; 
+            text-align: center;
+			padding-top:35px;
+   }
+  .pp img {
+            max-width: 200px; 
+            max-height: 200px; 
+            border-radius: 0%; 
+  }
+  
+  
+
+.cal {
+  margin-top: 20px;
+}
+
+.cal ul {
+  list-style-type: circle;
+  padding: 0;
+  margin: 0;
+}
+
+.cal li {
+  display: inline;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.cal li p {
+  margin: 5px 0;
+}
+
+.cal li a {
+  display: block;
+  padding: 5px 10px;
+  background-color: #28a745;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.cal li a:hover {
+  background-color: #218838;
+}
+
+ .pp {
+            max-width: 20px;
+            max-height: 20px; 
+        }
+		
+		
+.footer {
+  position: absolute;
+  display:flex;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color:white;
+  padding: 10px;
+  
+  clear: both;
+}
+
+.foot1, .foot2, .foot3 {
+	flex:2;
+  /*display: inline-block;*/
+  padding-left:50px;
+}		
+
+.foot1{
+padding-left:25px;
+margin-left:25px;
+margin-right:10px;
+}	
+
+.foot2{
+margin-right:20px;
+padding-right:20px	
+	
+	
+}	
+.foot3{
+padding-left:20px;
+margin-left:20px;	
+padding-right:10px;	
+margin-right:10px;	
+	
+		
+		
+}
