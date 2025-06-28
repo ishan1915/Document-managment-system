@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import UserDetail
+from .models import DocumentVersion, Task, UserDetail,Message
 
 
 
@@ -24,3 +24,18 @@ class UserDetailForm(forms.ModelForm):
 
 
 
+class TaskForm(forms.ModelForm):
+    document = forms.FileField(required=False)
+    class Meta:
+        model = Task
+        fields = ['receiver', 'title','description']
+
+class DocumentUploadForm(forms.ModelForm):
+    class Meta:
+        model = DocumentVersion
+        fields = ['document', 'version_note']
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ['text']

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Task</title>
+</head>
+<body>
+    <h1>Create New Task</h1>
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send Task</button>
+    </form>
+    <p><a href="/">Back to Dashboard</a></p>
+</body>
+</html>

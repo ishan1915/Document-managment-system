@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Detail</title>
+</head>
+<body>
+    <h1>{{ task.title }}</h1>
+    <h2>{{task.description}}</h2>
+    <p><strong>From:</strong> {{ task.sender }} | <strong>To:</strong> {{ task.receiver }}</p>
+    {% if not task.is_completed and user == task.receiver %}
+    <form method="post" action="{% url 'mark_completed' task.pk %}">{% csrf_token %}<button type="submit">Mark Completed</button></form>
+    {% elif task.is_completed %}<p><strong>Completed at:</strong> {{ task.completed_at }}</p>{% endif %}
+
+    <h3>Document Versions</h3>
+    <ul>
+        {% for doc in docs %}
+            <li><a href="{{ doc.document.url }}">Version ({{ doc.timestamp|date:'Y-m-d H:i' }}) by {{ doc.uploaded_by }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h3>Messages</h3>
+    <ul>
+        {% for msg in messages %}
+            <li><strong>{{ msg.sender.username }}</strong>: {{ msg.text }} ({{ msg.timestamp|date:'H:i' }})</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Add Message or Upload New Document</h3>
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        {{ msg_form.as_p }}
+        {{ doc_form.as_p }}
+        <button type="submit">Send</button>
+    </form>
+
+    <p><a href="/">Back to Dashboard</a></p>
+</body>
+</html>
